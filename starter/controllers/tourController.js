@@ -44,20 +44,14 @@ exports.getAllTours = async (req,res) =>{
             const numTours = await Tour.countDocuments();
             if (skip >=numTours) throw new Error('This pages does not exist');
         }
-
-
-
-
         const tours = await query;
-        
-        
         res.status(200).json({
             status: 'Success',
             results:tours.length,
             data:{
                 tours
             }
-    });
+        });
     } catch(err){
         res.status(400).json({
             status: 'Fail',
